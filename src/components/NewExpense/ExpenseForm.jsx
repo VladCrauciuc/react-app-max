@@ -5,6 +5,7 @@ import "./ExpenseForm.css";
 function ExpenseForm({ onSaveExpenseData }) {
   const [userInput, setUserInput] = useState({
     title: "",
+    description: "",
     amount: "",
     date: new Date(),
   });
@@ -24,7 +25,7 @@ function ExpenseForm({ onSaveExpenseData }) {
     ev.preventDefault();
 
     onSaveExpenseData(userInput);
-    setUserInput({ title: "", amount: "", date: new Date() });
+    setUserInput({ title: "", description: "", amount: "", date: new Date() });
   }
 
   return (
@@ -38,6 +39,17 @@ function ExpenseForm({ onSaveExpenseData }) {
             type="text"
             placeholder="Expense title"
             onChange={(ev) => inputChangeHandler("title", ev.target.value)}
+          />
+        </div>
+        <div className="new-expense__control">
+          <label>Description</label>
+          <input
+            value={userInput.description}
+            type="text"
+            placeholder="Expense description"
+            onChange={(ev) =>
+              inputChangeHandler("description", ev.target.value)
+            }
           />
         </div>
         <div className="new-expense__control">
